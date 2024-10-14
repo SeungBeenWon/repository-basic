@@ -1,1 +1,189 @@
-sad
+# **P2.7**
+
+KCL at Inverting :
+
+
+$$i_{1}=i_{2}+i_{-}$$
+$$\frac{v_{1}(t)-V_{-}}{R}=C\frac{\text{d}(V_{-}-v_{2}(t))}{\text{d}t}+i_{-}$$
+$$V_{-}=V_{+}=0, i_{-}=i_{+}=0$$
+$$\frac{v_{1}(t)}{R}=C\frac{\text{d}(-v_{2}(t))}{\text{d}t}$$
+
+
+라플라스 변환:
+
+
+$$\frac{V_{1}(s)}{R}=-Cs{V_{2}(s)}$$
+$$\therefore\frac{V_{2}(s)}{V_{1}(s)}=-\frac{1}{sCR}$$
+
+
+
+------------
+# **P2.12**
+
+Transfer Function :
+
+
+$$\frac{Y(s)}{R(s)}=\frac{K}{s+50}$$  
+
+R(s)는 unit step function이므로 라플라스 변환 시 1 :
+
+
+$$
+R(s) = \frac{1}{s}
+$$
+
+
+Y(s) :
+
+
+$$Y(s)=\frac{K}{s(s+50)}$$
+
+
+Y(s) 부분분수 :
+
+
+$$Y(s)=\frac{K}{50}(\frac{1}{s}-\frac{1}{s+50})$$
+
+
+Y(s) 역라플라스 변환 :
+
+
+$$y(t)=\frac{K}{50}(1-e^{-50t})$$
+
+
+$t\rightarrow\infty$일때 $y(t)\rightarrow1$이므로 :
+
+
+$$y(\infty)=\frac{K}{50}(1-e^{\infty})=\frac{K}{50}=1$$
+$$\therefore K=50$$
+
+
+----------------
+# **P2.15**
+
+Differential Equation :
+
+
+$$M\frac{\text{d}^2x(t)}{\text{d}t^2}+b\frac{\text{d}x(t)}{\text{d}t}+kx(t)=\delta(t)$$
+
+
+라플라스 변환 :
+
+
+$$ms^2X(s)+bsX(s)+kX(s)=1$$
+
+
+$$X(s)(Ms^2+bs+k)=1$$
+
+
+$$X(s)=\frac{1}{ms^2+bs+k}$$
+
+
+
+라플라스 inversion인 system response x(t)는 다음과 같다 :  
+
+
+$$
+\therefore \frac{2\sin\left(\frac{t\sqrt{-b^2+4km}}{2m}\right) e^{\left(\frac{-bt}{2m}\right)^2}}{\sqrt{4km-b^2}}
+$$  
+
+
+![P2.15]()
+
+
+
+
+
+-----------
+# **P2.26**
+
+Diff.Eqn of M : 
+
+
+$$M\frac{\text{d}^2x}{\text{d}t^2} = f(t) - b\frac{\text{d}(x(t)-y(t))}{\text{d}t} - k(x(t)-y(t))$$
+
+라플라스 : 
+
+
+$$M s^2 X(s) = F(s) - bs(X(s) - Y(s)) - k(X(s) - Y(s))$$
+
+$$X(s)=\frac{F(s)+(bs+k)Y(s)}{Ms^2+bs+k}$$
+
+Diff.Eqn of m :
+
+
+$$m\frac{\text{d}^2y}{\text{d}t^2} = -b\frac{\text{d}(y(t)-x(t))}{\text{d}t} - k(y(t)-x(t))$$
+
+
+라플라스 : 
+
+
+$$ms^2 X(s) = F(s) - bs(Y(s) - X(s)) - k(Y(s) - X(s))$$
+$$Y(s)(ms^2+bs+k)+X(s)(bs+k)=F(s)$$
+
+
+식 정리 : 
+
+
+$$\alpha = M s^2 + b s + k$$
+$$\beta = m s^2 + b s + k$$
+$$\gamma = b s + k$$  
+
+
+라 하자, 따라서 :  
+
+
+$$Y = \frac{\alpha X - F}{\gamma}$$
+$$\beta \left(\frac{\alpha X - F}{\gamma}\right) = \gamma X$$
+$$\beta \alpha X - \beta F = \gamma^2 X$$
+$$X = \frac{\beta F}{\beta \alpha - \gamma^2}$$
+$$\frac{Y}{F} = \frac{\gamma}{\beta \alpha - \gamma^2}$$
+
+$$\therefore\frac{Y(s)}{F(s)}=\frac{k + bs}{bms^3 + kms^2 + Mb s^3 + Mk s^2 + Mms^4}$$
+
+
+---
+# **P2.37**
+
+(a)  
+
+Diff.Eqn of m1 : 
+
+
+$$m_{1}\frac{\text{d}^2x(t)}{\text{d}t^2} = -k_{1}x(t) - k_{2}(x(t)-y(t))$$
+
+Diff.Eqn of m2 :  
+
+$$m_{2}\frac{\text{d}^2y(t)}{\text{d}t^2} = -k_{2}(y(t)-x(t)) - u$$
+
+
+(b)  
+$m_{1}=m_{2}=1, K_{1}=K_{2}=1$ 대입 :  
+
+
+$$\frac{\text{d}^2x(t)}{\text{d}t^2} = -x(t) - (x(t) - y(t))$$
+$$\frac{\text{d}^2y(t)}{\text{d}t^2} = -(y(t) - x(t)) - u$$
+
+라플라스 m1: 
+
+
+$$s^2 X(s) = Y(s) - X(s) - X(s)$$
+$$X(s)(s^2+2)=Y(s)$$  
+
+
+$$X(s)=\frac{Y(s)}{s^2+2}$$
+
+라플라스 m2 : 
+
+
+$$s^2 Y(s) = X(s) - Y(s) - U(s)$$
+
+
+에 m1 식의 X(s) 대입 :  
+
+
+$$s^2Y(s)+Y(s)-\frac{Y(s)}{s^2+2}=-U(s)$$
+$$(s^2+1-\frac{1}{s^2+2})Y(s)=-U(s)$$
+$$\frac{+s^4+3s^2+1}{s^2+2}Y(s)=-U(s)$$  
+
+$$\therefore\frac{Y(s)}{U(s)}=-\frac{s^2+2}{s^4+3s^2+1}$$
